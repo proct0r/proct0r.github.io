@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sunday Ogunleye — Payment Infrastructure &amp; SRE Engineer</title>
+	<meta name="description"
+		content="Sunday Solomon Ogunleye: Site Reliability and full-stack product engineer in Lagos. Payment infrastructure at Access Bank; WhatsApp payments, attendance and observability products at Soid Technologies.">
+	<meta property="og:title" content="Sunday Ogunleye — Payment Infrastructure & SRE Engineer">
+	<meta property="og:description" content="Builds and runs systems where downtime costs money: bank card payments, a WhatsApp payments platform, a geofenced attendance system and open-source observability.">
+	<meta property="og:image" content="images/sunday.jpg">
+	<link rel="icon" href="images/sunday.jpg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="css/portfolio.css">
+</head>
+
+<body>
+
+	<!-- Icon sprite -->
+	<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+		<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+		<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+		<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+		<symbol id="i-linkedin" viewBox="0 0 24 24"><path class="f" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" fill="currentColor" stroke="none"/></symbol>
+		<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+		<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+		<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+		<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+		<symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
+		<symbol id="i-switch" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></symbol>
+		<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+		<symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+		<symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+		<symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+		<symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+		<symbol id="i-cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+		<symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></symbol>
+		<symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+		<symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+		<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></symbol>
+		<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.5 8.5 0 1 1 21 11.5z"/></symbol>
+		<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></symbol>
+		<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></symbol>
+		<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+		<symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+		<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+		<symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+	</svg>
+
+	<!-- Navigation -->
+	<header class="nav" id="nav">
+		<div class="container nav__inner">
+			<a href="#top" class="nav__logo" aria-label="Sunday — back to top"><span
+					class="nav__logo-prompt">~/</span><span class="gradient-text">Sunday</span><span
+					class="nav__logo-caret">_</span></a>
+			<nav class="nav__links" id="navLinks">
+				<a href="#about">About</a>
+				<a href="#skills">Skills</a>
+				<a href="#projects">Projects</a>
+				<a href="#experience">Experience</a>
+				<a href="#certifications">Certifications</a>
+				<a href="#contact">Contact</a>
+			</nav>
+			<div class="nav__actions">
+				<button class="icon-btn" id="themeToggle" aria-label="Toggle colour theme"><svg class="ico"><use href="#i-sun"/></svg></button>
+				<a class="btn btn--sm btn--primary nav__resume" href="Sunday_Ogunleye_CV.pdf" target="_blank" rel="noopener">Resume</a>
+				<button class="icon-btn nav__burger" id="burger" aria-label="Open menu"><svg class="ico"><use href="#i-menu"/></svg></button>
+			</div>
+		</div>
+	</header>
+
+	<main id="top">
+
+		<!-- Hero -->
+		<section class="hero">
+			<div class="hero__grid-bg" aria-hidden="true"></div>
+			<div class="container hero__inner">
+				<div class="hero__text">
+					<p class="mono eyebrow"><span class="status-dot"></span>Lagos, Nigeria · Open to opportunities</p>
+					<h1>Hi, I'm <span class="gradient-text">Sunday Ogunleye</span>.</h1>
+					<p class="hero__role mono">&gt; <span id="typed">Site Reliability Engineer</span><span class="caret">_</span></p>
+					<p class="hero__lead">I build and run systems where downtime costs money. <strong>5+ years</strong> keeping
+						card payments up at one of Africa's largest banks, with <strong>zero-downtime</strong> switch and HSM upgrades
+						and a real-time observability platform. At Soid Technologies I ship <strong>full products end to end</strong>:
+						a WhatsApp payments platform on a <strong>double-entry ledger</strong>, a geofenced attendance system
+						load-tested to <strong>2,000 clock-ins at 74 ms p95</strong>, and open-source monitoring tools.</p>
+					<div class="hero__cta">
+						<a class="btn btn--primary" href="#projects">View projects <svg class="ico"><use href="#i-arrow"/></svg></a>
+						<a class="btn btn--ghost" href="#contact">Get in touch</a>
+					</div>
+					<div class="hero__social">
+						<a href="https://www.linkedin.com/in/ogunleye-sunday-solomon-psce-005b8a101/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico"><use href="#i-linkedin"/></svg></a>
+						<a href="https://github.com/proct0r" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ico"><use href="#i-github"/></svg></a>
+						<a href="mailto:fidalex09@gmail.com" aria-label="Email"><svg class="ico"><use href="#i-mail"/></svg></a>
+						<a href="tel:+2348165349401" aria-label="Phone"><svg class="ico"><use href="#i-phone"/></svg></a>
+					</div>
+				</div>
+
+				<div class="hero__visual">
+					<div class="hero__photo">
+						<img src="images/sunday.jpg" alt="Portrait of Sunday Ogunleye">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- About -->
+		<section class="section" id="about">
+			<div class="container">
+				<div class="section__head">
+					<p class="section__num mono">01.</p>
+					<h2>About me</h2>
+				</div>
+				<div class="about">
+					<div class="about__text">
+						<p>I'm a <strong>Payment Infrastructure &amp; Site Reliability Engineer</strong> at <strong>Access Bank Plc</strong>,
+							providing Level 3 production support for the card platforms behind ATM, POS, eCommerce and digital banking.
+							I started on the front-end processor desk reading <strong>ISO 8583</strong> messages field by field,
+							moved into implementation, and now lead upgrades and observability for the payment switch itself.</p>
+						<p>My work sits where uptime meets regulation. I led the production upgrade of the bank's
+							<strong>Postilion switch from 5.5 to 5.6 with zero customer impact</strong>, upgraded
+							<strong>production and DR Thales HSMs</strong> without pausing transaction processing, and took payment
+							infrastructure into subsidiaries in <strong>Sierra Leone, Zambia and Cameroon</strong>.</p>
+						<p>I also build tools. My <strong>payment observability platform</strong> uses custom Node.js Prometheus
+							exporters that read straight from Postilion and feed eight real-time Grafana dashboards.
+							<strong>AccessNotify</strong>, now in progress, tells customers about failed transactions before they need to call.</p>
+						<p>At <strong>Soid Technologies Limited</strong> I ship full products with an AI-assisted workflow (Claude Code): <strong>SoidPay</strong>, a WhatsApp
+							payments platform on a double-entry ledger, and a <strong>geofenced staff attendance portal</strong> load-tested at
+							2,000 clock-ins with a p95 of 74 ms.</p>
+						<a class="btn btn--ghost" href="Sunday_Ogunleye_CV.pdf" target="_blank" rel="noopener"><svg class="ico"><use href="#i-file"/></svg> View full resume</a>
+					</div>
+					<aside class="about__side">
+						<img class="about__photo" src="images/sunday.jpg" alt="Sunday Ogunleye">
+						<ul class="facts">
+							<li><svg class="ico"><use href="#i-pin"/></svg> Lagos, Nigeria</li>
+							<li><svg class="ico"><use href="#i-briefcase"/></svg> Payments Platform · Access Bank Plc</li>
+							<li><svg class="ico"><use href="#i-server"/></svg> Postilion · BankWorld · SmartVista</li>
+							<li><svg class="ico"><use href="#i-cap"/></svg> B.Tech · FUT Akure</li>
+						</ul>
+					</aside>
+				</div>
+
+				<div class="stats">
+					<div class="stat"><span class="stat__num mono">5+</span>years on production card payment platforms</div>
+					<div class="stat"><span class="stat__num mono">0</span>customer impact on the Postilion 5.6 upgrade</div>
+					<div class="stat"><span class="stat__num mono">3</span>countries: Sierra Leone, Zambia, Cameroon</div>
+					<div class="stat"><span class="stat__num mono">6</span>networks: Visa, Mastercard, Verve, NIBSS, Interswitch, UPSL</div>
+				</div>
+
+				<div class="focus-grid">
+					<div class="focus">
+						<div class="ico-wrap"><svg class="ico"><use href="#i-switch"/></svg></div>
+						<h3>Payment Switching</h3>
+						<p>Postilion routing, FEP configuration and ISO 8583 message analysis across card schemes and national switches.</p>
+					</div>
+					<div class="focus">
+						<div class="ico-wrap"><svg class="ico"><use href="#i-shield"/></svg></div>
+						<h3>Security &amp; Compliance</h3>
+						<p>Thales HSM administration, PCI DSS remediation, EMV and encryption hardening of payment infrastructure.</p>
+					</div>
+					<div class="focus">
+						<div class="ico-wrap"><svg class="ico"><use href="#i-activity"/></svg></div>
+						<h3>Observability</h3>
+						<p>Custom Prometheus exporters and Grafana dashboards that turn switch data into real-time signals and alerts.</p>
+					</div>
+					<div class="focus">
+						<div class="ico-wrap"><svg class="ico"><use href="#i-layers"/></svg></div>
+						<h3>Resilience</h3>
+						<p>Active-Active design, disaster recovery validation and production changes with zero unplanned downtime.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Skills -->
+		<section class="section section--alt" id="skills">
+			<div class="container">
+				<div class="section__head">
+					<p class="section__num mono">02.</p>
+					<h2>Tech stack</h2>
+				</div>
+				<div class="skills">
+					<div class="skill-group">
+						<h3><svg class="ico"><use href="#i-card"/></svg> Payment Infrastructure</h3>
+						<ul class="chips"><li>Postilion</li><li>ISO 8583</li><li>BankWorld</li><li>SmartVista</li><li>Card Management</li><li>FEP / Routing</li><li>Scheme Certification</li></ul>
+					</div>
+					<div class="skill-group">
+						<h3><svg class="ico"><use href="#i-server"/></svg> Infrastructure &amp; Reliability</h3>
+						<ul class="chips"><li>SRE</li><li>High Availability</li><li>Active-Active</li><li>Disaster Recovery</li><li>Load Balancing</li><li>Windows Server</li><li>SQL Server</li><li>VMware</li></ul>
+					</div>
+					<div class="skill-group">
+						<h3><svg class="ico"><use href="#i-activity"/></svg> Monitoring &amp; Observability</h3>
+						<ul class="chips"><li>Grafana</li><li>Prometheus</li><li>Node Exporter</li><li>Windows Exporter</li><li>Custom Exporters</li><li>Alerting</li><li>Transaction Analytics</li></ul>
+					</div>
+					<div class="skill-group">
+						<h3><svg class="ico"><use href="#i-code"/></svg> Development &amp; Automation</h3>
+						<ul class="chips"><li>Node.js</li><li>Express.js</li><li>REST APIs</li><li>JavaScript</li><li>SQL</li><li>Git</li></ul>
+					</div>
+					<div class="skill-group">
+						<h3><svg class="ico"><use href="#i-key"/></svg> Security &amp; Compliance</h3>
+						<ul class="chips"><li>Thales HSM</li><li>PCI DSS</li><li>EMV</li><li>CNP Fraud</li><li>Encryption</li></ul>
+					</div>
+					<div class="skill-group">
+						<h3><svg class="ico"><use href="#i-cog"/></svg> Service Management</h3>
+						<ul class="chips"><li>ITIL v4</li><li>Root Cause Analysis</li><li>Change Management</li><li>Business Continuity</li><li>Vendor Management</li></ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects -->
+		<section class="section" id="projects">
+			<div class="container">
+				<div class="section__head">
+					<p class="section__num mono">03.</p>
+					<h2>Featured projects</h2>
+				</div>
+
+				<div class="filters">
+					<button class="filter is-active" data-filter="all">All</button>
+					<button class="filter" data-filter="obs">Observability</button>
+					<button class="filter" data-filter="platform">Platform &amp; Upgrades</button>
+					<button class="filter" data-filter="integration">Integrations</button>
+					<button class="filter" data-filter="product">Products I've Built</button>
+				</div>
+
+				<div class="projects">
+
+					<!-- Featured: observability -->
+					<article class="card card--feature" data-tags="obs">
+						<div class="card__media card__media--icon">
+							<span class="badge badge--live">Live · 2026</span>
+							<div class="pipeline">
+								<svg viewBox="0 0 460 250" role="img" aria-label="Postilion SQL Server feeds a Node.js exporter, scraped by Prometheus, shown in Grafana and routed to alerts">
+									<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--accent)"/></marker></defs>
+									<g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">
+										<rect x="10" y="20" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+										<text x="105" y="44" fill="var(--text)" font-weight="600">Postilion DB</text>
+										<text x="105" y="62" fill="var(--text-muted)" font-size="11">SQL Server</text>
+										<rect x="260" y="20" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--accent)"/>
+										<text x="355" y="44" fill="var(--accent)" font-weight="600">Node.js exporter</text>
+										<text x="355" y="62" fill="var(--text-muted)" font-size="11">GET /metrics</text>
+										<rect x="135" y="110" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+										<text x="230" y="134" fill="var(--text)" font-weight="600">Prometheus</text>
+										<text x="230" y="152" fill="var(--text-muted)" font-size="11">scrape · rules</text>
+										<rect x="10" y="190" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--accent-2)"/>
+										<text x="105" y="214" fill="var(--accent-2)" font-weight="600">Grafana</text>
+										<text x="105" y="232" fill="var(--text-muted)" font-size="11">8 KPI dashboards</text>
+										<rect x="260" y="190" width="190" height="54" rx="10" fill="var(--surface)" stroke="#f59e0b"/>
+										<text x="355" y="214" fill="#f59e0b" font-weight="600">Alerts</text>
+										<text x="355" y="232" fill="var(--text-muted)" font-size="11">ops on-call</text>
+										<line x1="202" y1="47" x2="256" y2="47" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+										<line x1="330" y1="76" x2="272" y2="107" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+										<line x1="190" y1="166" x2="140" y2="187" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+										<line x1="270" y1="166" x2="320" y2="187" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+									</g>
+								</svg>
+							</div>
+						</div>
+						<div class="card__body">
+							<span class="org">Access Bank Plc · Lead engineer</span>
+							<h3>Enterprise Payment Observability Platform</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Switch health sat in SQL tables and log files. Explaining a dip in approvals meant manual queries across Postilion, BankWorld and gateway logs while customers were already failing.</dd></div>
+								<div><dt>Built</dt><dd>Custom Node.js Prometheus exporters that read payment metrics directly from Postilion's SQL Server, with Windows Exporter host metrics, Grafana dashboards and automated alerting.</dd></div>
+								<div><dt>Result</dt><dd>One real-time view of transaction health across the switch, card management and gateways, with alerts that fire before customer complaints arrive.</dd></div>
+							</dl>
+							<p class="impact-head">Dashboards shipped</p>
+							<ul class="dash-list"><li>Success rate</li><li>TPS</li><li>Volume</li><li>Customer declines</li><li>System declines</li><li>Switch health</li><li>Routing performance</li><li>Availability</li></ul>
+							<p class="impact-head">Impact</p>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>8</em></div><div class="impact__lbl">real-time payment KPIs</div></div>
+								<div class="impact__item"><div class="impact__num"><em>3</em></div><div class="impact__lbl">platforms in one view</div></div>
+								<div class="impact__item"><div class="impact__num"><em>1</em></div><div class="impact__lbl">central alerting layer</div></div>
+								<div class="impact__item"><div class="impact__num"><em>↓</em></div><div class="impact__lbl">incident detection &amp; diagnosis time</div></div>
+							</div>
+							<ul class="tags"><li>Grafana</li><li>Prometheus</li><li>Node.js</li><li>SQL Server</li><li>Windows Exporter</li></ul>
+						</div>
+						<div class="card__links"><span><svg class="ico"><use href="#i-shield"/></svg> Internal bank system</span><a href="https://github.com/proct0r/proct0r-Payment-Observability-Platform-POP" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg> Open-source version</a></div>
+					</article>
+
+					<!-- Featured: attendance portal -->
+					<article class="card card--feature" data-tags="product">
+						<div class="card__media card__media--icon">
+							<span class="badge badge--live">Load-tested · 2026</span>
+							<div class="pipeline">
+								<svg viewBox="0 0 460 250" role="img" aria-label="Clock-in latency at 2,000 users: p50 38 ms, p95 74 ms, p99 100 ms, max 223 ms, against a 500 ms target">
+									<g font-family="JetBrains Mono, monospace" font-size="12">
+										<text x="10" y="22" fill="var(--text-muted)">POST /clock/in · 2,000 users / 5 min</text>
+										<line x1="70" y1="40" x2="70" y2="212" stroke="var(--border)"/>
+										<line x1="430" y1="36" x2="430" y2="212" stroke="#f59e0b" stroke-dasharray="4 4"/>
+										<text x="436" y="232" fill="#f59e0b" text-anchor="end">500 ms target</text>
+										<text x="70" y="232" fill="var(--text-muted)" text-anchor="middle">0</text>
+										<text x="60" y="66" fill="var(--text)" text-anchor="end">p50</text>
+										<rect x="70" y="52" width="27.4" height="22" rx="4" fill="var(--accent)"/>
+										<text x="105" y="68" fill="var(--text)">38 ms</text>
+										<text x="60" y="108" fill="var(--text)" text-anchor="end">p95</text>
+										<rect x="70" y="94" width="53.3" height="22" rx="4" fill="var(--accent)"/>
+										<text x="131" y="110" fill="var(--text)" font-weight="600">74 ms</text>
+										<text x="60" y="150" fill="var(--text)" text-anchor="end">p99</text>
+										<rect x="70" y="136" width="72" height="22" rx="4" fill="var(--accent-2)"/>
+										<text x="150" y="152" fill="var(--text)">100 ms</text>
+										<text x="60" y="192" fill="var(--text)" text-anchor="end">max</text>
+										<rect x="70" y="178" width="160.6" height="22" rx="4" fill="var(--accent-2)"/>
+										<text x="238" y="194" fill="var(--text)">223 ms</text>
+									</g>
+								</svg>
+							</div>
+						</div>
+						<div class="card__body">
+							<span class="org">Soid Technologies Limited · Full-stack build</span>
+							<h3>Geofenced Staff Attendance Portal</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Paper registers and simple clock-in apps are easy to fake from home, and strict ones lock honest staff out when GPS is noisy.</dd></div>
+								<div><dt>Built</dt><dd>A phone PWA plus admin portal. Clock events are signed with a passkey, checked against PostGIS geofences and shift windows, and flagged for supervisor review instead of rejected. Hash-chained audit log, encrypted coordinates, two-approver corrections, CSV/Excel reports and multi-customer deployment.</dd></div>
+								<div><dt>Result</dt><dd>Passed its 2,000-clock-in morning-rush spec at a p95 of 74 ms against a 500 ms target. A stress run exposed a connection-pool deadlock (458 of 2,000 recorded), which I fixed and covered with a regression test (2,000 of 2,000).</dd></div>
+							</dl>
+							<p class="impact-head">Impact</p>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>74 ms</em></div><div class="impact__lbl">p95 clock-in, 6.7× under target</div></div>
+								<div class="impact__item"><div class="impact__num"><em>0</em></div><div class="impact__lbl">of 2,000 clock-ins lost</div></div>
+								<div class="impact__item"><div class="impact__num"><em>~90/s</em></div><div class="impact__lbl">capacity, 13× the spec rate</div></div>
+								<div class="impact__item"><div class="impact__num"><em>303</em></div><div class="impact__lbl">automated tests (unit, integration, E2E)</div></div>
+							</div>
+							<ul class="dash-list"><li>49 API endpoints</li><li>8 DB migrations</li><li>STRIDE threat model</li><li>Semgrep · Trivy · OWASP ZAP in CI</li><li>Passkeys (WebAuthn)</li></ul>
+							<ul class="tags"><li>TypeScript</li><li>Fastify</li><li>Next.js 16</li><li>PostgreSQL + PostGIS</li><li>Redis</li><li>Playwright</li><li>Docker</li></ul>
+						</div>
+						<div class="card__links"><span><svg class="ico"><use href="#i-clock"/></svg> Private repo · demo on request</span></div>
+					</article>
+
+					<!-- Featured: SoidPay platform -->
+					<article class="card card--feature" data-tags="product">
+						<div class="card__media card__media--icon">
+							<span class="badge badge--wip">Pre-launch · 2026</span>
+							<div class="pipeline">
+								<svg viewBox="0 0 460 250" role="img" aria-label="WhatsApp messages reach a NestJS API, which posts to a double-entry PostgreSQL ledger and calls Flutterwave, with a RabbitMQ worker and a maker-checker admin portal">
+									<defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--accent)"/></marker></defs>
+									<g font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">
+										<rect x="10" y="20" width="190" height="54" rx="10" fill="var(--surface)" stroke="#22c55e"/>
+										<text x="105" y="44" fill="#22c55e" font-weight="600">WhatsApp chat</text>
+										<text x="105" y="62" fill="var(--text-muted)" font-size="11">Flows · masked PIN</text>
+										<rect x="260" y="20" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--accent)"/>
+										<text x="355" y="44" fill="var(--accent)" font-weight="600">NestJS API</text>
+										<text x="355" y="62" fill="var(--text-muted)" font-size="11">91 endpoints · 20 modules</text>
+										<rect x="135" y="110" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--accent-2)"/>
+										<text x="230" y="134" fill="var(--accent-2)" font-weight="600">Double-entry ledger</text>
+										<text x="230" y="152" fill="var(--text-muted)" font-size="11">PostgreSQL · debits = credits</text>
+										<rect x="10" y="190" width="190" height="54" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+										<text x="105" y="214" fill="var(--text)" font-weight="600">Flutterwave</text>
+										<text x="105" y="232" fill="var(--text-muted)" font-size="11">KYC · funding · bills</text>
+										<rect x="260" y="190" width="190" height="54" rx="10" fill="var(--surface)" stroke="#f59e0b"/>
+										<text x="355" y="214" fill="#f59e0b" font-weight="600">Admin portal</text>
+										<text x="355" y="232" fill="var(--text-muted)" font-size="11">maker-checker · TOTP</text>
+										<line x1="202" y1="47" x2="256" y2="47" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar2)"/>
+										<line x1="330" y1="76" x2="272" y2="107" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar2)"/>
+										<line x1="190" y1="166" x2="140" y2="187" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar2)"/>
+										<line x1="270" y1="166" x2="320" y2="187" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar2)"/>
+									</g>
+								</svg>
+							</div>
+						</div>
+						<div class="card__body">
+							<span class="org">Soid Technologies Limited · Platform engineering</span>
+							<h3>SoidPay: WhatsApp Payments Platform</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Bring wallet funding, transfers, bank withdrawals, airtime, data and bills into WhatsApp without trusting a mutable balance column or chat text with PINs.</dd></div>
+								<div><dt>Built</dt><dd>A NestJS monorepo where the ledger is the source of truth: append-only double entry, idempotency, inbox-first webhooks re-verified with Flutterwave, a RabbitMQ worker, daily reconciliation, BVN-based KYC tiers, AML case workflow and a two-person-approval admin portal.</dd></div>
+								<div><dt>Result</dt><dd>Ran an adversarial security review and closed 32 of its 38 findings, including PIN lockout, stuck-funds and webhook-replay issues; npm audit went from 13 vulnerabilities to 0. Remaining items are launch and legal gates.</dd></div>
+							</dl>
+							<p class="impact-head">Impact</p>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>32/38</em></div><div class="impact__lbl">security review findings fixed</div></div>
+								<div class="impact__item"><div class="impact__num"><em>13→0</em></div><div class="impact__lbl">npm audit vulnerabilities</div></div>
+								<div class="impact__item"><div class="impact__num"><em>36</em></div><div class="impact__lbl">schema migrations</div></div>
+								<div class="impact__item"><div class="impact__num"><em>176</em></div><div class="impact__lbl">tests on real PostgreSQL &amp; RabbitMQ</div></div>
+							</div>
+							<ul class="dash-list"><li>Wallet &amp; transfers</li><li>Virtual accounts</li><li>Bank cash-out</li><li>Airtime, data, bills</li><li>BVN KYC</li><li>AML cases</li><li>NDPA data requests</li></ul>
+							<ul class="tags"><li>TypeScript</li><li>NestJS</li><li>PostgreSQL</li><li>RabbitMQ</li><li>Redis</li><li>WhatsApp Cloud API</li><li>Flutterwave</li><li>Kubernetes</li></ul>
+						</div>
+						<div class="card__links"><span><svg class="ico"><use href="#i-shield"/></svg> Private repo · regulated product</span></div>
+					</article>
+
+					<article class="card card--feature" data-tags="obs">
+						<div class="card__media card__media--shot"><span class="badge">Open source</span><img src="images/pop-dashboard.jpg" alt="Grafana payment switch dashboard showing transactions today, approved transactions, system declines and per-hour trends"></div>
+						<div class="card__body">
+							<span class="org">GitHub · MIT licence</span>
+							<h3>Payment Observability Platform (POP)</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Payment teams outside big banks rarely have a ready monitoring stack for switch metrics.</dd></div>
+								<div><dt>Built</dt><dd>An open-source version of my bank work: Node.js exporter, transaction simulator, Prometheus SLO and error-budget rules, Grafana dashboard, Docker Compose.</dd></div>
+								<div><dt>Result</dt><dd>One-command stack anyone can run and adapt to their switch.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>13</em></div><div class="impact__lbl">Grafana panels</div></div>
+								<div class="impact__item"><div class="impact__num"><em>8</em></div><div class="impact__lbl">alert rules incl. SLO &amp; error budget</div></div>
+								<div class="impact__item"><div class="impact__num"><em>3</em></div><div class="impact__lbl">GitHub Actions pipelines</div></div>
+								<div class="impact__item"><div class="impact__num"><em>1</em></div><div class="impact__lbl">command to run the stack</div></div>
+							</div>
+							<ul class="tags"><li>Prometheus</li><li>Grafana</li><li>Node.js</li><li>Alertmanager</li><li>Docker</li></ul>
+						</div>
+						<div class="card__links"><a href="https://github.com/proct0r/proct0r-Payment-Observability-Platform-POP" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg> Code</a></div>
+					</article>
+
+					<article class="card" data-tags="platform">
+						<div class="card__media card__media--icon"><span class="badge">Production upgrade</span><svg class="ico"><use href="#i-server"/></svg></div>
+						<div class="card__body">
+							<span class="org">Access Bank Plc · Led upgrade</span>
+							<h3>Postilion Payment Switch 5.5 → 5.6</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>The core card switch needed a major version upgrade without interrupting live card traffic.</dd></div>
+								<div><dt>Built</dt><dd>Led the plan, production change, cutover and post-upgrade validation with the OEM vendor.</dd></div>
+								<div><dt>Result</dt><dd>Upgraded in production with no customer-visible impact.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>0</em></div><div class="impact__lbl">customer impact</div></div>
+								<div class="impact__item"><div class="impact__num"><em>0</em></div><div class="impact__lbl">unplanned downtime</div></div>
+								<div class="impact__item"><div class="impact__num"><em>4</em></div><div class="impact__lbl">channels kept live</div></div>
+							</div>
+							<ul class="tags"><li>Postilion</li><li>Change Mgmt</li><li>SQL Server</li></ul>
+						</div>
+						<div class="card__links"><span>ATM · POS · eCommerce · Digital</span></div>
+					</article>
+
+					<article class="card" data-tags="platform">
+						<div class="card__media card__media--icon"><span class="badge">Security infra</span><svg class="ico"><use href="#i-key"/></svg></div>
+						<div class="card__body">
+							<span class="org">Access Bank Plc · Coordinated</span>
+							<h3>Thales HSM Firmware Upgrades, Prod &amp; DR</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Every PIN translation and key operation runs through the HSMs, so both sites had to be upgraded without stopping authorizations.</dd></div>
+								<div><dt>Built</dt><dd>Upgraded across the load-balanced HSM setup, then validated Active-Active between production and DR.</dd></div>
+								<div><dt>Result</dt><dd>Both sites upgraded with uninterrupted processing.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>2</em></div><div class="impact__lbl">sites: prod + DR</div></div>
+								<div class="impact__item"><div class="impact__num"><em>0</em></div><div class="impact__lbl">processing interruptions</div></div>
+								<div class="impact__item"><div class="impact__num"><em>✓</em></div><div class="impact__lbl">Active-Active validated</div></div>
+							</div>
+							<ul class="tags"><li>Thales HSM</li><li>Load Balancing</li><li>DR</li><li>PCI DSS</li></ul>
+						</div>
+						<div class="card__links"><span>Regulatory compliance exercise</span></div>
+					</article>
+
+					<article class="card" data-tags="product">
+						<div class="card__media card__media--icon"><span class="badge badge--wip">In progress</span><svg class="ico"><use href="#i-bell"/></svg></div>
+						<div class="card__body">
+							<span class="org">Internal platform · Builder</span>
+							<h3>AccessNotify: Failed-Transaction Alerts</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Customers learn about failed transactions from their balance, then call support to ask why.</dd></div>
+								<div><dt>Building</dt><dd>A Node.js and Express service that validates failed transactions and notifies customers, with secure APIs and delivery tracking.</dd></div>
+								<div><dt>Goal</dt><dd>Inform every affected customer automatically and cut related support calls.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>100%</em></div><div class="impact__lbl">target: failures notified</div></div>
+								<div class="impact__item"><div class="impact__num"><em>↓</em></div><div class="impact__lbl">support calls</div></div>
+								<div class="impact__item"><div class="impact__num"><em>✓</em></div><div class="impact__lbl">delivery tracked</div></div>
+							</div>
+							<ul class="tags"><li>Node.js</li><li>Express.js</li><li>SQL Server</li><li>REST</li></ul>
+						</div>
+						<div class="card__links"><span>Customer experience · 2026</span></div>
+					</article>
+
+					<article class="card" data-tags="integration">
+						<div class="card__media card__media--icon"><span class="badge">Implementation</span><svg class="ico"><use href="#i-card"/></svg></div>
+						<div class="card__body">
+							<span class="org">2022 – 2023 · Implementation engineer</span>
+							<h3>AfrigoCard Launch &amp; Fintech Onboarding</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>New card schemes and fintech partners needed a faster path from contract to live transactions.</dd></div>
+								<div><dt>Built</dt><dd>Implemented Afrigo Card on the switch, onboarded Moniepoint and Hydrogen, and streamlined testing and scheme certification.</dd></div>
+								<div><dt>Result</dt><dd>New scheme live, two fintechs transacting, shorter time to market.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>1</em></div><div class="impact__lbl">new card scheme live</div></div>
+								<div class="impact__item"><div class="impact__num"><em>2</em></div><div class="impact__lbl">fintechs onboarded</div></div>
+								<div class="impact__item"><div class="impact__num"><em>↑</em></div><div class="impact__lbl">success rate after routing tuning</div></div>
+							</div>
+							<ul class="tags"><li>Postilion</li><li>ISO 8583</li><li>FEP</li><li>Certification</li></ul>
+						</div>
+						<div class="card__links"><span>Moniepoint · Hydrogen</span></div>
+					</article>
+
+					<article class="card" data-tags="integration">
+						<div class="card__media card__media--icon"><span class="badge">Cross-border</span><svg class="ico"><use href="#i-globe"/></svg></div>
+						<div class="card__body">
+							<span class="org">2022 – 2023 · Deployment support</span>
+							<h3>Subsidiary Payment Infrastructure Rollouts</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>Group subsidiaries needed payment infrastructure to parent-bank standards in markets with different schemes and regulators.</dd></div>
+								<div><dt>Built</dt><dd>Supported switch and card management deployments, with migrations delivered without downtime.</dd></div>
+								<div><dt>Result</dt><dd>Payment infrastructure live in three countries.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>3</em></div><div class="impact__lbl">countries</div></div>
+								<div class="impact__item"><div class="impact__num"><em>3</em></div><div class="impact__lbl">regions: West, Central, Southern Africa</div></div>
+								<div class="impact__item"><div class="impact__num"><em>0</em></div><div class="impact__lbl">migration downtime</div></div>
+							</div>
+							<ul class="tags"><li>Postilion</li><li>CMS</li><li>Migrations</li></ul>
+						</div>
+						<div class="card__links"><span>Sierra Leone · Zambia · Cameroon</span></div>
+					</article>
+
+					<article class="card" data-tags="product">
+						<div class="card__media card__media--icon"><span class="badge">Web · 2026</span><svg class="ico"><use href="#i-chat"/></svg></div>
+						<div class="card__body">
+							<span class="org">Soid Technologies Limited · Website v1.8</span>
+							<h3>SoidPay Website</h3>
+							<dl class="pbr">
+								<div><dt>Problem</dt><dd>A chat-based bank needs a public site that explains the product, earns trust and sends people to the official WhatsApp number.</dd></div>
+								<div><dt>Built</dt><dd>A mobile-first React and TypeScript site with an animated WhatsApp chat hero, how-it-works flow, security, audiences and FAQ, deployed on Cloudflare with security headers.</dd></div>
+								<div><dt>Result</dt><dd>Launch-ready site with SEO, social and structured data, shipped through 8 versions.</dd></div>
+							</dl>
+							<div class="impact">
+								<div class="impact__item"><div class="impact__num"><em>v1.8</em></div><div class="impact__lbl">iterated releases</div></div>
+								<div class="impact__item"><div class="impact__num"><em>3</em></div><div class="impact__lbl">audiences: people, businesses, partners</div></div>
+								<div class="impact__item"><div class="impact__num"><em>4</em></div><div class="impact__lbl">step chat-to-payment flow</div></div>
+							</div>
+							<ul class="tags"><li>React</li><li>TypeScript</li><li>Vite</li><li>Cloudflare</li><li>SEO</li></ul>
+						</div>
+						<div class="card__links"><span>Marketing site for the platform above</span></div>
+					</article>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Experience -->
+		<section class="section section--alt" id="experience">
+			<div class="container">
+				<div class="section__head">
+					<p class="section__num mono">04.</p>
+					<h2>Experience &amp; education</h2>
+				</div>
+				<ol class="timeline">
+					<li class="timeline__item">
+						<span class="timeline__date mono">2026 — Present</span>
+						<h3>Product &amp; Platform Engineer · <span class="muted">Soid Technologies Limited</span></h3>
+						<ul>
+							<li><strong>SoidPay (WhatsApp payments):</strong> built the platform end to end on NestJS and PostgreSQL: wallet, transfers, virtual accounts, bank cash-out, airtime, data and bills over WhatsApp, on an append-only <strong>double-entry ledger</strong> where debits always equal credits.</li>
+							<li>Delivered <strong>91 API endpoints</strong> across <strong>20 modules</strong> and <strong>36 schema migrations</strong>, with Flutterwave KYC, funding and bills, a RabbitMQ worker, daily provider reconciliation and a <strong>two-person-approval</strong> admin portal with TOTP.</li>
+							<li>Ran an adversarial security review and closed <strong>32 of 38 findings</strong> (PIN lockout, stuck funds, webhook replay, PII at rest); cut npm audit vulnerabilities from <strong>13 to 0</strong>; backed every money fix with <strong>176 tests</strong> on real PostgreSQL and RabbitMQ in CI.</li>
+							<li><strong>Staff attendance portal:</strong> shipped a geofenced clock-in PWA and admin portal that passed its <strong>2,000 clock-in</strong> morning-rush spec at a <strong>p95 of 74 ms</strong> against a 500 ms target, with <strong>0 lost</strong> and about <strong>90 clock-ins/s</strong> capacity, 13× the spec.</li>
+							<li>Found and fixed a connection-pool deadlock under stress (<strong>458 → 2,000 of 2,000</strong> recorded), guarded by a regression test; <strong>303 automated tests</strong> and Semgrep, Trivy and OWASP ZAP gates in CI.</li>
+							<li><strong>SoidPay website:</strong> designed and shipped the public site in React, TypeScript and Vite on Cloudflare, iterated to <strong>v1.8</strong> with SEO, structured data and security headers.</li>
+						</ul>
+					</li>
+					<li class="timeline__item">
+						<span class="timeline__date mono">Oct 2023 — Present</span>
+						<h3>Technical Support Engineer, Payments Platform · <span class="muted">Access Bank Plc</span></h3>
+						<ul>
+							<li>Level 3 production support for card platforms processing ATM, POS, eCommerce and digital banking transactions.</li>
+							<li>Led the Postilion <strong>5.5 → 5.6</strong> production upgrade with <strong>zero customer impact</strong>.</li>
+							<li>Coordinated firmware upgrades for <strong>production and DR</strong> Thales HSMs with uninterrupted processing.</li>
+							<li>Designed the bank's payment observability platform: <strong>8 KPI dashboards</strong> on Grafana and Prometheus fed by custom Node.js exporters.</li>
+							<li>Led root cause analysis on critical incidents involving Visa, Mastercard, Verve, NIBSS and Interswitch.</li>
+							<li>Managed routing, switch configuration and production changes with <strong>zero unplanned downtime</strong>; supported PCI DSS remediation.</li>
+						</ul>
+					</li>
+					<li class="timeline__item">
+						<span class="timeline__date mono">Oct 2022 — Sep 2023</span>
+						<h3>Implementation Engineer · <span class="muted">Payment Infrastructure</span></h3>
+						<ul>
+							<li>Implemented <strong>AfrigoCard</strong> and onboarded <strong>Moniepoint</strong> and <strong>Hydrogen</strong>.</li>
+							<li>Optimised switch routing and FEP configuration, improving success rates across channels.</li>
+							<li>Delivered <strong>zero-downtime</strong> migrations for Postilion and card management systems.</li>
+							<li>Supported deployments for subsidiaries in <strong>Sierra Leone, Zambia and Cameroon</strong>.</li>
+						</ul>
+					</li>
+					<li class="timeline__item">
+						<span class="timeline__date mono">Aug 2021 — Sep 2022</span>
+						<h3>FEP Support Engineer · <span class="muted">Card Payments</span></h3>
+						<ul>
+							<li>Monitored and supported FEP platforms for ATM, POS and web card transactions.</li>
+							<li>Resolved real-time failures through <strong>ISO 8583</strong> message analysis, log review and switch diagnostics.</li>
+							<li>Worked with <strong>6 networks</strong> (Visa, Mastercard, Verve, Interswitch, UPSL, NIBSS) on routing, authorization and settlement issues.</li>
+						</ul>
+					</li>
+				</ol>
+
+				<p class="subhead mono">// education</p>
+				<div class="edu">
+					<div class="edu__item">
+						<div class="cert__icon"><svg class="ico"><use href="#i-cap"/></svg></div>
+						<div>
+							<span class="timeline__date mono">2017</span>
+							<h3>B.Tech, Meteorology &amp; Climate Science</h3>
+							<p class="muted">Federal University of Technology, Akure · Second Class Honours</p>
+						</div>
+					</div>
+					<div class="edu__item">
+						<div class="cert__icon"><svg class="ico"><use href="#i-card"/></svg></div>
+						<div>
+							<span class="timeline__date mono">Professional</span>
+							<h3>Associate Cards &amp; Payments Professional 1</h3>
+							<p class="muted">Retail Banking Association</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Certifications -->
+		<section class="section" id="certifications">
+			<div class="container">
+				<div class="section__head">
+					<p class="section__num mono">05.</p>
+					<h2>Certifications &amp; training</h2>
+				</div>
+				<div class="certs">
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-switch"/></svg></div><div><h3>Postilion Basic &amp; ISO 8583</h3><p class="muted">ACI Worldwide</p></div></div>
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-card"/></svg></div><div><h3>Mastercard Academy Training</h3><p class="muted">Mastercard · Dubai</p></div></div>
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-shield"/></svg></div><div><h3>PCI DSS &amp; Card Payment Security</h3><p class="muted">Phillips Consulting Limited</p></div></div>
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-key"/></svg></div><div><h3>EMV, eCommerce Payments &amp; CNP Fraud</h3><p class="muted">Smart Commerce International · UK</p></div></div>
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-layers"/></svg></div><div><h3>CBCI, Business Continuity</h3><p class="muted">BCT London · UK</p></div></div>
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-cog"/></svg></div><div><h3>ITIL v4 Foundation</h3><p class="muted">Service Management</p></div></div>
+					<div class="cert"><div class="cert__icon"><svg class="ico"><use href="#i-award"/></svg></div><div><h3>Associate Cards &amp; Payments Professional 1</h3><p class="muted">Retail Banking Association</p></div></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section class="section section--alt contact" id="contact">
+			<div class="container contact__inner">
+				<p class="section__num mono">06. What's next?</p>
+				<h2>Let's keep payments up</h2>
+				<p>I'm open to payment infrastructure, SRE and platform engineering roles, and to conversations about
+					observability and resilience in financial systems. My inbox is always open.</p>
+				<a class="btn btn--primary btn--lg" href="mailto:fidalex09@gmail.com"><svg class="ico"><use href="#i-mail"/></svg> fidalex09@gmail.com</a>
+				<div class="contact__links">
+					<a href="https://www.linkedin.com/in/ogunleye-sunday-solomon-psce-005b8a101/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-linkedin"/></svg> LinkedIn</a>
+					<a href="https://github.com/proct0r" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg> GitHub</a>
+					<a href="tel:+2348165349401"><svg class="ico"><use href="#i-phone"/></svg> +234 816 534 9401</a>
+					<a href="Sunday_Ogunleye_CV.pdf" target="_blank" rel="noopener"><svg class="ico"><use href="#i-file"/></svg> Resume (PDF)</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="footer">
+		<div class="container footer__inner">
+			<p>© <span id="year">2026</span> Sunday Solomon Ogunleye</p>
+			<p><a href="#top">Back to top ↑</a></p>
+		</div>
+	</footer>
+
+	<script src="js/portfolio.js"></script>
+</body>
+
+</html>
